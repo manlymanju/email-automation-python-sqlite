@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS emails;
+
+CREATE TABLE emails (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    recipient TEXT NOT NULL,
+    subject TEXT NOT NULL,
+    body TEXT NOT NULL,
+    status TEXT CHECK(status IN ('PENDING', 'SENT', 'FAILED')) NOT NULL,
+    retry_count INTEGER DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
